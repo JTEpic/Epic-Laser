@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=mainXC16.c
+SOURCEFILES_QUOTED_IF_SPACED=mainXC16.c AsmLib.s motor.c display.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/mainXC16.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/mainXC16.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/mainXC16.o ${OBJECTDIR}/AsmLib.o ${OBJECTDIR}/motor.o ${OBJECTDIR}/display.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/mainXC16.o.d ${OBJECTDIR}/AsmLib.o.d ${OBJECTDIR}/motor.o.d ${OBJECTDIR}/display.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/mainXC16.o
+OBJECTFILES=${OBJECTDIR}/mainXC16.o ${OBJECTDIR}/AsmLib.o ${OBJECTDIR}/motor.o ${OBJECTDIR}/display.o
 
 # Source Files
-SOURCEFILES=mainXC16.c
+SOURCEFILES=mainXC16.c AsmLib.s motor.c display.c
 
 
 
@@ -95,6 +95,18 @@ ${OBJECTDIR}/mainXC16.o: mainXC16.c  .generated_files/flags/default/46cd63e30eeb
 	@${RM} ${OBJECTDIR}/mainXC16.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  mainXC16.c  -o ${OBJECTDIR}/mainXC16.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mainXC16.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
+${OBJECTDIR}/motor.o: motor.c  .generated_files/flags/default/2f683a3e6e144874195c4fc4fcff5833448270e1 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/motor.o.d 
+	@${RM} ${OBJECTDIR}/motor.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  motor.c  -o ${OBJECTDIR}/motor.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/motor.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/display.o: display.c  .generated_files/flags/default/1fe1d08be966190cd542a4e003cd59660c2a3c0e .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/display.o.d 
+	@${RM} ${OBJECTDIR}/display.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  display.c  -o ${OBJECTDIR}/display.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/display.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
 else
 ${OBJECTDIR}/mainXC16.o: mainXC16.c  .generated_files/flags/default/7cbbc303c00cbea8aa605907735ebc8cd3142a6a .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
@@ -102,12 +114,36 @@ ${OBJECTDIR}/mainXC16.o: mainXC16.c  .generated_files/flags/default/7cbbc303c00c
 	@${RM} ${OBJECTDIR}/mainXC16.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  mainXC16.c  -o ${OBJECTDIR}/mainXC16.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mainXC16.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
+${OBJECTDIR}/motor.o: motor.c  .generated_files/flags/default/23e570e0d8bc7615724fa285cf724a73431a8f5 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/motor.o.d 
+	@${RM} ${OBJECTDIR}/motor.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  motor.c  -o ${OBJECTDIR}/motor.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/motor.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/display.o: display.c  .generated_files/flags/default/1fd2254f477f22381bfa8819d2a7e0be4f5ab93a .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/display.o.d 
+	@${RM} ${OBJECTDIR}/display.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  display.c  -o ${OBJECTDIR}/display.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/display.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
 endif
 
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assemble
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+${OBJECTDIR}/AsmLib.o: AsmLib.s  .generated_files/flags/default/1372bbc377335935e4e6e0ca05e1ca740dc7a6a7 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/AsmLib.o.d 
+	@${RM} ${OBJECTDIR}/AsmLib.o 
+	${MP_CC} $(MP_EXTRA_AS_PRE)  AsmLib.s  -o ${OBJECTDIR}/AsmLib.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -omf=elf -DXPRJ_default=$(CND_CONF)    -Wa,-MD,"${OBJECTDIR}/AsmLib.o.d",--defsym=__MPLAB_BUILD=1,--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_SIMULATOR=1,-g,--no-relax$(MP_EXTRA_AS_POST)  -mdfp="${DFP_DIR}/xc16"
+	
 else
+${OBJECTDIR}/AsmLib.o: AsmLib.s  .generated_files/flags/default/35deb5d85137924da16aa35cfde9d44b34c97402 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/AsmLib.o.d 
+	@${RM} ${OBJECTDIR}/AsmLib.o 
+	${MP_CC} $(MP_EXTRA_AS_PRE)  AsmLib.s  -o ${OBJECTDIR}/AsmLib.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -omf=elf -DXPRJ_default=$(CND_CONF)    -Wa,-MD,"${OBJECTDIR}/AsmLib.o.d",--defsym=__MPLAB_BUILD=1,-g,--no-relax$(MP_EXTRA_AS_POST)  -mdfp="${DFP_DIR}/xc16"
+	
 endif
 
 # ------------------------------------------------------------------------------------
