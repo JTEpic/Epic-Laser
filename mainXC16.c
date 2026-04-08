@@ -7,6 +7,8 @@
 
 #include <xc.h>
 #include "AsmLib.h"
+#include "motor.h"
+#include "display.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -87,8 +89,25 @@ void __attribute__((interrupt, auto_psv)) _T3Interrupt(){
     _T3IF = 0;
 }
 
+void test_align(){
+    // Test Moving to Angle
+    motor_set(BOTTOM, 90); // Move motor1 90 degrees
+    delay(1000);
+    motor_set(TOP, 90); // Move motor2 90 degrees
+    delay(1000);
+
+    // Test Moving to Coordinate
+    display_set(0,0);
+    delay(1000);
+    display_set(256,256);
+    delay(1000);
+}
+
 int main(void) {
     setup();
+    
+    // Testing/Alignment Procedure
+    test_align();
     
     while(1){
         // Test On
@@ -96,17 +115,12 @@ int main(void) {
         //delay(500);
         //_RB5 = 0;
         
-        // Test Moving to Coordinate
-        motor_set(0, 90); // Move motor1 90 degrees
-        motor_set(1, 90); // Move motor2 90 degrees
+        // Draw all objects
+        display_render();
         
-        display_set(0,0);
-        delay(500);
-        display_set(256,256);
-        
-        // Loop Delay
+        // Loop Delay, FPS = 1/delay
         //delay(DEFAULT_DELAY);
-        delay(500);
+        delay(200);
     }
     
     return 0;

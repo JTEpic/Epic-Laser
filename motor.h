@@ -12,8 +12,18 @@
 extern "C" {
 #endif
 
+// Global variables holding current motor angles in degrees
+extern uint16_t motorOneTheta;
+extern uint16_t motorTwoTheta;
+
+// Motor numbers to words
+enum{
+    BOTTOM,
+    TOP
+};
+
 // Rotates the specified motor theta degrees
-void motor_set(uint8_t motor, uint8_t theta);
+void motor_set(uint8_t motor, uint16_t theta);
 
 #ifdef	__cplusplus
 }
