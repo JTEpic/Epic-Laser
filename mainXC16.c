@@ -35,32 +35,14 @@ void setup(void)
     // Execute once code goes here
     CLKDIVbits.RCDIV = 0;  //Set RCDIV=1:1 (default 2:1) 32MHz or FCY/2=16M
     
-    AD1PCFG = 0x9ffe;            //sets all pins to digital I/O, AN0 (RA0) analog
-    //AD1PCFGbits.PCFG0 = 0; //AN0
+    AD1PCFG = 0x9fff;            //sets all pins to digital I/O
     TRISA = 0xffff;              //set port A to inputs
     TRISB = 0x0000;              //and port B to outputs, 0=output
     //LATA = 0xffff;               //Set all of port A to HIGH
-    //LATB = 0xffff;               //and all of port B to HIGH
+    LATB = 0x0000;               //and all of port B to LOW
+    _RB8 = 1; // Activate Laser
     
-    // Timer 2, 100ms
-    T2CON = 0; // General Reg
-    T2CONbits.TCKPS = 2; // Prescaler
-    PR2 = 24999; // Max Count
-    TMR2 = 0; // Current Count
-    IFS0bits.T2IF = 0; // Flag bit
-    T2CONbits.TON = 1; // Enable bit
-    // enable Timer 2 interrupt
-    IEC0bits.T2IE = 1;
-    
-    // Timer 3, 1/16 s
-    T3CON = 0; // General Reg
-    T3CONbits.TCKPS = 2; // Prescaler, 1:1,1:8,1:64,1:256
-    PR3 = 15624; // Max Count, (1/K) = PRE * 62.5n * (PRx+1)
-    TMR3 = 0; // Current Count
-    IFS0bits.T3IF = 0; // Flag bit
-    T3CONbits.TON = 1; // Enable bit
-    // enable Timer 3 interrupt
-    IEC0bits.T3IE = 1;
+    initMotors();
 }
 
 // Delay by input's milliseconds
@@ -71,11 +53,11 @@ void delay(uint16_t delay_in_ms){
 
 // Timer 2 Interrupt, every 100ms
 void __attribute__((interrupt, auto_psv)) _T2Interrupt(){
-    char avgStr[20];
-    uint16_t avg = 0x0000;
+    //char scoreStr[20];
+    //uint16_t score = 0x0000;
     
     // Float to String
-    sprintf(avgStr, "%6.4f V", ((float)avg)*(3.3f/1024.0f));  // x.xxxx V
+    //sprintf(scoreStr, "%6.4f V", ((float)score)*(3.3f/1024.0f));  // x.xxxx V
                        // 6.4 in the format string %6.4f means 6 
                        // placeholders for the whole
                        // floating-point number, 4 of which are for 
@@ -92,9 +74,9 @@ void __attribute__((interrupt, auto_psv)) _T3Interrupt(){
 void test_align(){
     // Test Moving to Angle
     motor_set(BOTTOM, 90); // Move motor1 90 degrees
-    delay(1000);
+    delay(2000);
     motor_set(TOP, 90); // Move motor2 90 degrees
-    delay(1000);
+    delay(2000);
 
     // Test Moving to Coordinate
     display_set(0,0);

@@ -22,6 +22,9 @@ enum{
     TOP
 };
 
+// Initializes Motors
+void initMotors();
+
 // Rotates the specified motor theta degrees
 void motor_set(uint8_t motor, uint16_t theta);
 

@@ -15,6 +15,7 @@ void display_set(uint8_t xPos, uint8_t yPos){
     // Rotate motors to align with coordinate
     motor_set(BOTTOM, 90);
     motor_set(TOP, 90);
+    delay(1); // May need to wait for motor to get to position
 }
 
 // Draw input object
@@ -28,6 +29,7 @@ void display_draw(Object *obj){
     // Activate all vertices/coords
     for(uint8_t x=0;x<obj->vCount;x++){
         display_set(obj->vertices[x].x + position.x, obj->vertices[x].y + position.y);
+        //delay(1); // Likely the delay in display_set will suffice
     }
 }
 
