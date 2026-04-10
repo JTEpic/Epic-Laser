@@ -1,4 +1,5 @@
 #include <xc.h>
+#include "AsmLib.h"
 #include "display.h"
 #include "motor.h"
 #include <stdint.h>
@@ -11,11 +12,14 @@ Object asteroid = {
     0 // Initial Rotation
 };
 
+uint16_t xAngleMax = 30; // Max angle corresponding to farthest distance rightward
+uint16_t yAngleMax = 30; // Max angle corresponding to farthest distance downward
+// 256x256 display
 void display_set(uint8_t xPos, uint8_t yPos){
     // Rotate motors to align with coordinate
-    motor_set(BOTTOM, 90);
-    motor_set(TOP, 90);
-    delay(1); // May need to wait for motor to get to position
+    motor_set(BOTTOM, (uint8_t)((float)xPos/256)*xAngleMax);
+    motor_set(TOP, (uint8_t)((float)yPos/256)*yAngleMax);
+    //delay1m(); // May need to wait for motor to get to position, likely covered in motor_set though
 }
 
 // Draw input object

@@ -1,9 +1,10 @@
 #include <xc.h>
+#include "AsmLib.h"
 #include "motor.h"
 #include <stdint.h>
 
 uint16_t motorOneTheta = 0; // 0 at start
-uint16_t motorTwoTheta = 0;
+uint16_t motorTwoTheta = 0; // 0 at start
 
 void initMotors(){
     // PPS to Map peripherals to pins
@@ -13,8 +14,10 @@ void initMotors(){
     __builtin_write_OSCCONL(OSCCON | 0x40); // lock   PPS
     
     //AD1PCFG |= 0x0000;            //sets pins to digital I/O
-    TRISB &= 0xffcf;              //and port B to output, 0=output
-    
+    TRISB &= 0b1111100000111111;              //RB6,RB7,RB8,RB9,RB10, 0=output
+    _RB10 = 0; // Motor Enables, active low
+    _RB9 = 0; // Top Motor Direction
+    _RB8 = 0; // Bottom Motor Direction
     
     // Bottom Motor (RP6)
     
@@ -60,14 +63,16 @@ void motor_set(uint8_t motor, uint16_t theta){
     // Rotate motor TO theta, current motorXTheta is starting position
     if(motor == BOTTOM){
         // Send pulse
-        OC1RS = 160;  // Duration of pulse
+        OC1RS = 160;  // Duration of pulse, 10us
         OC1CONbits.OCM = 0b100; // Output compare single pulse
+        delay100u();
     
         motorOneTheta = theta;
     } else if(motor == TOP){
         // Send pulse
-        OC2RS = 160;  // Duration of pulse
+        OC2RS = 160;  // Duration of pulse, 10us
         OC2CONbits.OCM = 0b100; // Output compare single pulse
+        delay100u();
         
         motorTwoTheta = theta;
     }

@@ -37,10 +37,10 @@ void setup(void)
     
     AD1PCFG = 0x9fff;            //sets all pins to digital I/O
     TRISA = 0xffff;              //set port A to inputs
-    TRISB = 0x0000;              //and port B to outputs, 0=output
+    TRISB = 0x0000;              //and port B to outputs,RB5, 0=output
     //LATA = 0xffff;               //Set all of port A to HIGH
     LATB = 0x0000;               //and all of port B to LOW
-    _RB8 = 1; // Activate Laser
+    _RB5 = 0; // Laser Enable
     
     initMotors();
 }
@@ -72,6 +72,11 @@ void __attribute__((interrupt, auto_psv)) _T3Interrupt(){
 }
 
 void test_align(){
+    // Manuel Alignment
+    _RB10 = 1; // Disable motors to allow alignment to (0,0) top left of display
+    delay(3000);
+    _RB10 = 0;
+    
     // Test Moving to Angle
     motor_set(BOTTOM, 90); // Move motor1 90 degrees
     delay(2000);
