@@ -21,8 +21,8 @@ void display_set(uint8_t xPos, uint8_t yPos){
         return;
     
     // Rotate motors to align with coordinate
-    motor_set(XMOTOR, (uint8_t)((float)xPos/window_width)*xAngleMax);
-    motor_set(YMOTOR, (uint8_t)((float)yPos/window_height)*yAngleMax);
+    motor_set(XMOTOR, (uint8_t)((float)xPos/(window_width-1)) * xAngleMax);
+    motor_set(YMOTOR, (uint8_t)((float)yPos/(window_height-1)) * yAngleMax);
     //delay1m(); // May need to wait for motor to get to position, likely covered in motor_set though
 }
 
