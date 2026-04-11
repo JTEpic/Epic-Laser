@@ -14,11 +14,15 @@ Object asteroid = {
 
 uint16_t xAngleMax = 30; // Max angle corresponding to farthest distance rightward
 uint16_t yAngleMax = 30; // Max angle corresponding to farthest distance downward
-// 256x256 display
+// window_width by window_height display
 void display_set(uint8_t xPos, uint8_t yPos){
+    // Check if above bounds, can't be negative
+    if(xPos >= window_width || yPos >= window_height)
+        return;
+    
     // Rotate motors to align with coordinate
-    motor_set(BOTTOM, (uint8_t)((float)xPos/256)*xAngleMax);
-    motor_set(TOP, (uint8_t)((float)yPos/256)*yAngleMax);
+    motor_set(XMOTOR, (uint8_t)((float)xPos/window_width)*xAngleMax);
+    motor_set(YMOTOR, (uint8_t)((float)yPos/window_height)*yAngleMax);
     //delay1m(); // May need to wait for motor to get to position, likely covered in motor_set though
 }
 
@@ -33,7 +37,7 @@ void display_draw(Object *obj){
     // Activate all vertices/coords
     for(uint8_t x=0;x<obj->vCount;x++){
         display_set(obj->vertices[x].x + position.x, obj->vertices[x].y + position.y);
-        //delay(1); // Likely the delay in display_set will suffice
+        //delay(1); // Likely the delay in display_set/motor_set will suffice
     }
 }
 

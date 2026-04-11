@@ -40,7 +40,7 @@ void setup(void)
     TRISB = 0x0000;              //and port B to outputs,RB5, 0=output
     //LATA = 0xffff;               //Set all of port A to HIGH
     LATB = 0x0000;               //and all of port B to LOW
-    _RB5 = 0; // Laser Enable
+    _RB5 = 1; // Laser Enable
     
     initMotors();
 }
@@ -74,19 +74,19 @@ void __attribute__((interrupt, auto_psv)) _T3Interrupt(){
 void test_align(){
     // Manuel Alignment
     _RB10 = 1; // Disable motors to allow alignment to (0,0) top left of display
-    delay(3000);
+    delay(5000);
     _RB10 = 0;
     
     // Test Moving to Angle
-    motor_set(BOTTOM, 90); // Move motor1 90 degrees
+    motor_set(XMOTOR, 90); // Move xmotor 90 degrees
     delay(2000);
-    motor_set(TOP, 90); // Move motor2 90 degrees
+    motor_set(YMOTOR, 90); // Move ymotor 90 degrees
     delay(2000);
 
     // Test Moving to Coordinate
     display_set(0,0);
     delay(1000);
-    display_set(256,256);
+    display_set(255,255);
     delay(1000);
 }
 

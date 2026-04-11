@@ -3,23 +3,23 @@
 #include "motor.h"
 #include <stdint.h>
 
-uint16_t motorOneTheta = 0; // 0 at start
-uint16_t motorTwoTheta = 0; // 0 at start
+int16_t motorXTheta = 0; // 0 at start
+int16_t motorYTheta = 0; // 0 at start
 
 void initMotors(){
     // PPS to Map peripherals to pins
     __builtin_write_OSCCONL(OSCCON & 0xbf); // unlock PPS
-    RPOR3bits.RP6R = 18;  // Use Pin RP6 (BOTTOM Motor) for Output Compare 1 = "18"
-    RPOR3bits.RP7R = 19;  // Use Pin RP7 (TOP Motor) for Output Compare 2 = "19"
+    RPOR3bits.RP6R = 18;  // Use Pin RP6 (X Motor) for Output Compare 1 = "18"
+    RPOR3bits.RP7R = 19;  // Use Pin RP7 (Y Motor) for Output Compare 2 = "19"
     __builtin_write_OSCCONL(OSCCON | 0x40); // lock   PPS
     
     //AD1PCFG |= 0x0000;            //sets pins to digital I/O
-    TRISB &= 0b1111100000111111;              //RB6,RB7,RB8,RB9,RB10, 0=output
+    TRISB &= 0b1111100000111111;    //RB6,RB7,RB8,RB9,RB10, 0=output
     _RB10 = 0; // Motor Enables, active low
-    _RB9 = 0; // Top Motor Direction
-    _RB8 = 0; // Bottom Motor Direction
+    _RB9 = 0; // Y Motor Direction
+    _RB8 = 0; // X Motor Direction
     
-    // Bottom Motor (RP6)
+    // X Motor (RP6)
     
     // Timer 2, 1.5625ms
     T2CON = 0; // General Reg
@@ -39,7 +39,7 @@ void initMotors(){
     //OC1CONbits.OCM = 0b100; // Output compare single pulse
     
     
-    // Top Motor (RP7)
+    // Y Motor (RP7)
     
     // Timer 3, 1.5625ms
     T3CON = 0; // General Reg
@@ -61,19 +61,39 @@ void initMotors(){
 
 void motor_set(uint8_t motor, uint16_t theta){
     // Rotate motor TO theta, current motorXTheta is starting position
-    if(motor == BOTTOM){
-        // Send pulse
-        OC1RS = 160;  // Duration of pulse, 10us
-        OC1CONbits.OCM = 0b100; // Output compare single pulse
-        delay100u();
-    
-        motorOneTheta = theta;
-    } else if(motor == TOP){
-        // Send pulse
-        OC2RS = 160;  // Duration of pulse, 10us
-        OC2CONbits.OCM = 0b100; // Output compare single pulse
-        delay100u();
+    if(motor == XMOTOR){
+        int16_t diffX = theta - motorXTheta;
+        // Decide Direction
+        if(diffX>0)
+            _RB8 = 0;
+        else
+            _RB8 = 1;
         
-        motorTwoTheta = theta;
+        // Calculate pulses needed and send
+        for(uint16_t x = 0; x < ((uint16_t)diffX/STEPPER_PULSE_DIST); x++){
+            // Send pulse
+            OC1RS = 160;  // Duration of pulse, 10us
+            OC1CONbits.OCM = 0b100; // Output compare single pulse
+            delay100u();
+        }
+        
+        motorXTheta = theta; // should change to actual calculated position from pulses (+-X.Y degrees)?
+    } else if(motor == YMOTOR){
+        int16_t diffY = theta - motorYTheta;
+        // Decide Direction
+        if(diffY>0)
+            _RB9 = 0;
+        else
+            _RB9 = 1;
+        
+        // Calculate pulses needed and send
+        for(uint16_t x = 0; x < ((uint16_t)diffY/STEPPER_PULSE_DIST); x++){
+            // Send pulse
+            OC2RS = 160;  // Duration of pulse, 10us
+            OC2CONbits.OCM = 0b100; // Output compare single pulse
+            delay100u();
+        }
+        
+        motorYTheta = theta;
     }
 }

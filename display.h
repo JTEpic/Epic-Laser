@@ -11,6 +11,9 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
+
+#define window_width 256  // Window Max X
+#define window_height 256 // Window Max Y
     
 // Coordinate Struct, can be a position, scaling, pivot point, etc
 typedef struct {
@@ -20,7 +23,7 @@ typedef struct {
 
 // Struct describing one object
 typedef struct {
-    const Coord *vertices; // Relative coords for object vertices, {0,0} is top left, {256,256} is bottom right, can make dynamic later for effects
+    const Coord *vertices; // Relative coords for object vertices, {0,0} is top left, {255,255} is bottom right, can make dynamic later for effects
     const uint8_t vCount; // Number of relative coords (above)
     Coord pos; // X and Y position of object
     uint16_t rot; // Rotation angle of object
@@ -32,7 +35,7 @@ extern Object asteroid;
 // Hold pointers to all objects to be rendered
 //extern Object objects[];
 
-// Moves the laser to align to the specified display coordinate 256x256
+// Moves the laser to align to the specified display coordinate (window_width by window_height)
 void display_set(uint8_t xPos, uint8_t yPos);
 
 // Draw input object
