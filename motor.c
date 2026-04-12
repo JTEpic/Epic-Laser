@@ -3,8 +3,8 @@
 #include "motor.h"
 #include <stdint.h>
 
-int16_t motorXTheta = 0; // 0 at start
-int16_t motorYTheta = 0; // 0 at start
+uint16_t motorXTheta = 0; // 0 at start
+uint16_t motorYTheta = 0; // 0 at start
 
 void initMotors(){
     // PPS to Map peripherals to pins
@@ -62,15 +62,18 @@ void initMotors(){
 void motor_set(uint8_t motor, uint16_t theta){
     // Rotate motor TO theta, current motorXTheta is starting position
     if(motor == XMOTOR){
-        int16_t diffX = theta - motorXTheta;
+        int16_t diffX = (int16_t)(theta - motorXTheta);
         // Decide Direction
-        if(diffX>0)
+        if(diffX > 0)
             _RB8 = 0;
-        else
+        else{
+            diffX *= -1;
             _RB8 = 1;
+        }
         
         // Calculate pulses needed and send
-        for(uint16_t x = 0; x < ((uint16_t)diffX/STEPPER_PULSE_DIST); x++){
+        const uint16_t pulses = (uint16_t)((float)diffX/STEPPER_PULSE_DIST);
+        for(uint16_t x = 0; x < pulses; x++){
             // Send pulse
             OC1RS = 160;  // Duration of pulse, 10us
             OC1CONbits.OCM = 0b100; // Output compare single pulse
@@ -79,15 +82,18 @@ void motor_set(uint8_t motor, uint16_t theta){
         
         motorXTheta = theta; // should change to actual calculated position from pulses (+-X.Y degrees)?
     } else if(motor == YMOTOR){
-        int16_t diffY = theta - motorYTheta;
+        int16_t diffY = (int16_t)(theta - motorYTheta);
         // Decide Direction
-        if(diffY>0)
+        if(diffY > 0)
             _RB9 = 0;
-        else
+        else{
+            diffY *= -1;
             _RB9 = 1;
+        }
         
         // Calculate pulses needed and send
-        for(uint16_t x = 0; x < ((uint16_t)diffY/STEPPER_PULSE_DIST); x++){
+        const uint16_t pulses = (uint16_t)((float)diffY/STEPPER_PULSE_DIST);
+        for(uint16_t x = 0; x < pulses; x++){
             // Send pulse
             OC2RS = 160;  // Duration of pulse, 10us
             OC2CONbits.OCM = 0b100; // Output compare single pulse

@@ -72,6 +72,8 @@ void __attribute__((interrupt, auto_psv)) _T3Interrupt(){
 }
 
 void test_align(){
+    _RB5 = 1; // Laser Enable
+    
     // Manuel Alignment
     _RB10 = 1; // Disable motors to allow alignment to (0,0) top left of display
     delay(5000);
@@ -88,6 +90,8 @@ void test_align(){
     delay(1000);
     display_set(255,255);
     delay(1000);
+    
+    _RB5 = 0; // Laser Disable
 }
 
 int main(void) {

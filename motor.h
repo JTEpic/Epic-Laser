@@ -13,11 +13,11 @@ extern "C" {
 #endif
 
 // Reflects the change of angle in degrees of a stepper motor after one pulse
-#define STEPPER_PULSE_DIST 1.8
+#define STEPPER_PULSE_DIST 1.8f
 
 // Global variables holding current motor angles in degrees
-extern int16_t motorXTheta;
-extern int16_t motorXTheta;
+extern uint16_t motorXTheta;
+extern uint16_t motorXTheta;
 
 // Motor numbers to words
 enum{
