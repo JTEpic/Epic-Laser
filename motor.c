@@ -3,7 +3,7 @@
 #include "motor.h"
 #include <stdint.h>
 
-uint16_t motorXTheta = 0; // 0 at start
+uint16_t motorXTheta = 0; // 0 at start, should change to float
 uint16_t motorYTheta = 0; // 0 at start
 
 void initMotors(){
@@ -62,7 +62,7 @@ void initMotors(){
 void motor_set(uint8_t motor, uint16_t theta){
     // Rotate motor TO theta, current motorXTheta is starting position
     if(motor == XMOTOR){
-        int16_t diffX = (int16_t)(theta - motorXTheta);
+        int16_t diffX = (int16_t)(theta - motorXTheta); // should change to float
         // Decide Direction
         if(diffX > 0)
             _RB8 = 0;

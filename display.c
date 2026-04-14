@@ -19,10 +19,10 @@ void display_set(uint8_t xPos, uint8_t yPos){
         return;
     
     // Rotate motors to align with coordinate
-    const uint16_t newXAngle = (float)xPos/((float)window_width-1.0f) * XAngleMax;
-    const uint16_t newYAngle = (float)yPos/((float)window_height-1.0f) * YAngleMax;
-    motor_set(XMOTOR, newXAngle);
-    motor_set(YMOTOR, newYAngle);
+    const float newXAngle = (float)xPos/((float)(window_width-1)) * XAngleMax;
+    const float newYAngle = (float)yPos/((float)(window_height-1)) * YAngleMax;
+    motor_set(XMOTOR, (uint16_t)newXAngle);
+    motor_set(YMOTOR, (uint16_t)newYAngle);
     //delay1m(); // May need to wait for motor to get to position, likely covered in motor_set though
 }
 
