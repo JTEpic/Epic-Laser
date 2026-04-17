@@ -28,13 +28,17 @@ typedef struct {
     const Coord *vertices; // Relative coords for object vertices, {0,0} is top left, {255,255} is bottom right, can make dynamic later for effects
     const uint8_t vCount; // Number of relative coords (above)
     Coord pos; // X and Y position of object
+    //Coord vel; // VelX and VelY velocity of object
     uint16_t rot; // Rotation angle of object
+    uint8_t scal; // Scale of object
 } Object;
 
 // Asteroid 2D representation (manual coordinates)
 extern Object asteroid;
 // Square
 extern Object square;
+// Square2
+extern Object square2;
 // Triangle
 extern Object triangle;
 

@@ -84,6 +84,7 @@ void motor_set(uint8_t motor, uint16_t theta){
             //delay1m(); // 1kHz recommend
         }
         
+        // Set New Theta
         //motorXTheta = (float)theta;
         if(!_RB8)
             motorXTheta += (float)pulses * STEPPER_PULSE_DIST;
@@ -112,6 +113,7 @@ void motor_set(uint8_t motor, uint16_t theta){
             //delay1m();
         }
         
+        // Set New Theta
         //motorYTheta = (float)theta;
         if(!_RB9)
             motorYTheta += (float)pulses * STEPPER_PULSE_DIST;

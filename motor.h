@@ -31,6 +31,9 @@ void initMotors();
 // Rotates the specified motor theta degrees
 void motor_set(uint8_t motor, uint16_t theta);
 
+// Rotates XMOTOR and YMOTOR motors allowing diagonal movement easily
+//void motors_set(uint16_t theta1, uint16_t theta2);
+
 #ifdef	__cplusplus
 }
 #endif

@@ -9,7 +9,8 @@ Object asteroid = {
     (Coord[]){{0,0},{10,30},{35,35},{40,20},{25,0},{0,0}}, // {0,0} is top left
     6, // Number of above 
     {100,100}, // Initial Position
-    0 // Initial Rotation
+    0, // Initial Rotation
+    1  // Initial Scale
 };
 
 // Square Object
@@ -17,7 +18,17 @@ Object square = {
     (Coord[]){{0,0},{0,50},{50,50},{50,0},{0,0}}, // {0,0} is top left
     5, // Number of above 
     {100,100}, // Initial Position
-    0 // Initial Rotation
+    0, // Initial Rotation
+    1  // Initial Scale
+};
+
+// Square Object
+Object square2 = {
+    (Coord[]){{0,0},{0,50},{50,50},{50,0},{0,0}}, // {0,0} is top left
+    5, // Number of above 
+    {50,100}, // Initial Position
+    0, // Initial Rotation
+    1  // Initial Scale
 };
 
 // Triangle Object
@@ -25,7 +36,8 @@ Object triangle = {
     (Coord[]){{0,50},{50,50},{25,0},{0,50}}, // {0,0} is top left
     4, // Number of above 
     {200,200}, // Initial Position
-    0 // Initial Rotation
+    0, // Initial Rotation
+    1  // Initial Scale
 };
 
 // window_width by window_height display
@@ -63,16 +75,41 @@ void display_draw(Object *obj){
 
 // Draw all objects
 void display_render(){
-    //Move Position Random Direction
+    //Move Positions Random Direction
+    // Asteroid
     /*asteroid.pos.x += 5;
     asteroid.pos.y += 5;
     display_draw(&asteroid);*/
     
+    // Square
     square.pos.x += 5;
     square.pos.y += 5;
-    display_draw(&square);
+    //display_draw(&square);
     
+    // Triangle
     //triangle.pos.x += 5;
     //triangle.pos.y += 5;
-    display_draw(&triangle);
+    //display_draw(&triangle);
+    
+    // Square2
+    static int8_t square2VelX = 1;
+    static int8_t square2VelY = 1;
+    // Left Boundary
+    if(square2.pos.x == 0){
+        square2VelX = 1;
+    // Right Boundary
+    } else if(square2.pos.x >= (255-50)){
+        square2VelX = -1;
+    }
+    // Top Boundary
+    if(square2.pos.y == 0){
+        square2VelY = 1;
+    }
+    // Bottom Boundary
+    else if(square2.pos.y >= (255-50)){
+        square2VelY = -1;
+    }
+    square2.pos.x += square2VelX;
+    square2.pos.y += square2VelY;
+    display_draw(&square2);
 }
