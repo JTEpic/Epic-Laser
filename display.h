@@ -14,8 +14,8 @@ extern "C" {
 
 #define window_width 256  // Window Max X
 #define window_height 256 // Window Max Y
-#define XAngleMax 30.0f; // Max angle corresponding to farthest distance rightward to appear on screen
-#define YAngleMax 30.0f; // Max angle corresponding to farthest distance downward to appear on screen
+#define XAngleMax 17.325f; // Max angle corresponding to farthest distance rightward to appear on screen, screen 1 foot away
+#define YAngleMax 10.125f; // Max angle corresponding to farthest distance downward to appear on screen
 
 // Coordinate Struct, can be a position, scaling, pivot point, etc
 typedef struct {
@@ -33,6 +33,8 @@ typedef struct {
 
 // Asteroid 2D representation (manual coordinates)
 extern Object asteroid;
+// Square
+extern Object square;
 
 // Hold pointers to all objects to be rendered
 //extern Object objects[];

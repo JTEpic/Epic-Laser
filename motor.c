@@ -21,10 +21,10 @@ void initMotors(){
     
     // X Motor (RP6)
     
-    // Timer 2, 1.5625ms
+    // Timer 2, 500*Tcy to send pulses in time
     T2CON = 0; // General Reg
     T2CONbits.TCKPS = 0; // Prescaler
-    PR2 = 24999; // Max Count
+    PR2 = 499; // Max Count
     TMR2 = 0; // Current Count
     IFS0bits.T2IF = 0; // Flag bit
     T2CONbits.TON = 1; // Enable bit
@@ -44,7 +44,7 @@ void initMotors(){
     // Timer 3, 1.5625ms
     T3CON = 0; // General Reg
     T3CONbits.TCKPS = 0; // Prescaler, 1:1,1:8,1:64,1:256
-    PR3 = 24999; // Max Count, Delay = PRE * Tcy * (PRx+1)
+    PR3 = 499; // Max Count, Delay = PRE * Tcy * (PRx+1)
     TMR3 = 0; // Current Count
     IFS0bits.T3IF = 0; // Flag bit
     T3CONbits.TON = 1; // Enable bit
@@ -77,7 +77,8 @@ void motor_set(uint8_t motor, uint16_t theta){
             // Send pulse
             OC1RS = 160;  // Duration of pulse, 10us
             OC1CONbits.OCM = 0b100; // Output compare single pulse
-            delay100u();
+            //delay100u(); // 1/T for freq, 10kHz max
+            delay1m(); // 1kHz recommend
         }
         
         motorXTheta = theta; // should change to actual calculated position from pulses (+-X.Y degrees)?
@@ -97,7 +98,8 @@ void motor_set(uint8_t motor, uint16_t theta){
             // Send pulse
             OC2RS = 160;  // Duration of pulse, 10us
             OC2CONbits.OCM = 0b100; // Output compare single pulse
-            delay100u();
+            //delay100u();
+            delay1m();
         }
         
         motorYTheta = theta;

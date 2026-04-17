@@ -12,6 +12,14 @@ Object asteroid = {
     0 // Initial Rotation
 };
 
+// Square Object
+Object square = {
+    (Coord[]){{0,0},{0,50},{50,50},{50,0},{0,0}}, // {0,0} is top left
+    5, // Number of above 
+    {100,100}, // Initial Position
+    0 // Initial Rotation
+};
+
 // window_width by window_height display
 void display_set(uint8_t xPos, uint8_t yPos){
     // Check if above bounds, can't be negative, should actually go to best position
@@ -28,10 +36,6 @@ void display_set(uint8_t xPos, uint8_t yPos){
 
 // Draw input object
 void display_draw(Object *obj){
-    //Move Position Random Direction
-    obj->pos.x += 5;
-    obj->pos.y += 5;
-    
     Coord position = obj->pos;
     // Go to first position with laser disabled
     if(obj->vCount > 0){
@@ -51,5 +55,12 @@ void display_draw(Object *obj){
 
 // Draw all objects
 void display_render(){
-    display_draw(&asteroid);
+    //Move Position Random Direction
+    /*asteroid.pos.x += 5;
+    asteroid.pos.y += 5;
+    display_draw(&asteroid);*/
+    
+    square.pos.x += 5;
+    square.pos.y += 5;
+    display_draw(&square);
 }

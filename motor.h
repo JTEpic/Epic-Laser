@@ -12,8 +12,8 @@
 extern "C" {
 #endif
 
-// Reflects the change of angle in degrees of a stepper motor after one pulse
-#define STEPPER_PULSE_DIST 1.8f
+// Reflects the change of angle in degrees of a stepper motor after one pulse, 1.8 degrees * 1/8 setting
+#define STEPPER_PULSE_DIST 0.225f
 
 // Global variables holding current motor angles in degrees
 extern uint16_t motorXTheta;

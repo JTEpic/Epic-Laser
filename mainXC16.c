@@ -76,13 +76,13 @@ void test_align(){
     
     // Manuel Alignment
     _RB10 = 1; // Disable motors to allow alignment to (0,0) top left of display
-    delay(5000);
+    delay(15000);
     _RB10 = 0;
     
     // Test Moving to Angle
-    motor_set(XMOTOR, 90); // Move xmotor 90 degrees
+    motor_set(XMOTOR, 45); // Move xmotor 90 degrees
     delay(2000);
-    motor_set(YMOTOR, 90); // Move ymotor 90 degrees
+    motor_set(YMOTOR, 45); // Move ymotor 90 degrees
     delay(2000);
 
     // Test Moving to Coordinate
@@ -100,6 +100,8 @@ int main(void) {
     // Testing/Alignment Procedure
     test_align();
     
+    //uint8_t temp = 0;
+    
     while(1){
         // Test On
         //_RB5 = 1;
@@ -109,9 +111,13 @@ int main(void) {
         // Draw all objects
         display_render();
         
+        // Spin
+        //temp += 1;
+        //motor_set(XMOTOR, temp);
+        
         // Loop Delay, FPS = 1/delay
         //delay(DEFAULT_DELAY);
-        delay(200);
+        //delay(200);
     }
     
     return 0;
