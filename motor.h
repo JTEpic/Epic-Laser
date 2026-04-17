@@ -16,8 +16,8 @@ extern "C" {
 #define STEPPER_PULSE_DIST 0.225f
 
 // Global variables holding current motor angles in degrees
-extern uint16_t motorXTheta;
-extern uint16_t motorXTheta;
+extern float motorXTheta;
+extern float motorXTheta;
 
 // Motor numbers to words
 enum{

@@ -35,6 +35,8 @@ typedef struct {
 extern Object asteroid;
 // Square
 extern Object square;
+// Triangle
+extern Object triangle;
 
 // Hold pointers to all objects to be rendered
 //extern Object objects[];

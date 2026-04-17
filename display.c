@@ -20,6 +20,14 @@ Object square = {
     0 // Initial Rotation
 };
 
+// Triangle Object
+Object triangle = {
+    (Coord[]){{0,50},{50,50},{25,0},{0,50}}, // {0,0} is top left
+    4, // Number of above 
+    {200,200}, // Initial Position
+    0 // Initial Rotation
+};
+
 // window_width by window_height display
 void display_set(uint8_t xPos, uint8_t yPos){
     // Check if above bounds, can't be negative, should actually go to best position
@@ -29,6 +37,7 @@ void display_set(uint8_t xPos, uint8_t yPos){
     // Rotate motors to align with coordinate
     const float newXAngle = (float)xPos/((float)(window_width-1)) * XAngleMax;
     const float newYAngle = (float)yPos/((float)(window_height-1)) * YAngleMax;
+    // Runs one motor completely at a time, can't go diagonal for now
     motor_set(XMOTOR, (uint16_t)newXAngle);
     motor_set(YMOTOR, (uint16_t)newYAngle);
     //delay1m(); // May need to wait for motor to get to position, likely covered in motor_set though
@@ -47,7 +56,6 @@ void display_draw(Object *obj){
     // Activate all vertices/coords
     for(uint8_t x=1;x<obj->vCount;x++){
         display_set(obj->vertices[x].x + position.x, obj->vertices[x].y + position.y);
-        //delay(1); // Likely the delay in display_set/motor_set will suffice
     }
     
     _RB5 = 0; // Laser Disable
@@ -63,4 +71,8 @@ void display_render(){
     square.pos.x += 5;
     square.pos.y += 5;
     display_draw(&square);
+    
+    //triangle.pos.x += 5;
+    //triangle.pos.y += 5;
+    display_draw(&triangle);
 }

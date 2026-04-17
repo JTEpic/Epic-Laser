@@ -81,9 +81,9 @@ void test_align(){
     
     // Test Moving to Angle
     motor_set(XMOTOR, 45); // Move xmotor 90 degrees
-    delay(2000);
+    delay(1000);
     motor_set(YMOTOR, 45); // Move ymotor 90 degrees
-    delay(2000);
+    delay(1000);
 
     // Test Moving to Coordinate
     display_set(0,0);

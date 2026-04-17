@@ -3,8 +3,8 @@
 #include "motor.h"
 #include <stdint.h>
 
-uint16_t motorXTheta = 0; // 0 at start, should change to float
-uint16_t motorYTheta = 0; // 0 at start
+float motorXTheta = 0.0f; // 0 at start
+float motorYTheta = 0.0f; // 0 at start
 
 void initMotors(){
     // PPS to Map peripherals to pins
@@ -62,46 +62,60 @@ void initMotors(){
 void motor_set(uint8_t motor, uint16_t theta){
     // Rotate motor TO theta, current motorXTheta is starting position
     if(motor == XMOTOR){
-        int16_t diffX = (int16_t)(theta - motorXTheta); // should change to float
+        float diffX = ((float)theta - motorXTheta);
         // Decide Direction
-        if(diffX > 0)
+        if(diffX > 0.0f)
             _RB8 = 0;
         else{
-            diffX *= -1;
+            diffX *= -1.0f;
             _RB8 = 1;
         }
         
         // Calculate pulses needed and send
-        const uint16_t pulses = (uint16_t)((float)diffX/STEPPER_PULSE_DIST);
+        const uint16_t pulses = (uint16_t)(diffX/STEPPER_PULSE_DIST);
         for(uint16_t x = 0; x < pulses; x++){
             // Send pulse
             OC1RS = 160;  // Duration of pulse, 10us
             OC1CONbits.OCM = 0b100; // Output compare single pulse
-            //delay100u(); // 1/T for freq, 10kHz max
-            delay1m(); // 1kHz recommend
+            delay100u(); // 1/T for freq, 10kHz max
+            delay100u(); // 5kHz
+            delay100u();
+            delay100u(); // 2.5kHz
+            //delay1m(); // 1kHz recommend
         }
         
-        motorXTheta = theta; // should change to actual calculated position from pulses (+-X.Y degrees)?
+        //motorXTheta = (float)theta;
+        if(!_RB8)
+            motorXTheta += (float)pulses * STEPPER_PULSE_DIST;
+        else
+            motorXTheta -= (float)pulses * STEPPER_PULSE_DIST;
     } else if(motor == YMOTOR){
-        int16_t diffY = (int16_t)(theta - motorYTheta);
+        float diffY = ((float)theta - motorYTheta);
         // Decide Direction
-        if(diffY > 0)
+        if(diffY > 0.0f)
             _RB9 = 0;
         else{
-            diffY *= -1;
+            diffY *= -1.0f;
             _RB9 = 1;
         }
         
         // Calculate pulses needed and send
-        const uint16_t pulses = (uint16_t)((float)diffY/STEPPER_PULSE_DIST);
+        const uint16_t pulses = (uint16_t)(diffY/STEPPER_PULSE_DIST);
         for(uint16_t x = 0; x < pulses; x++){
             // Send pulse
             OC2RS = 160;  // Duration of pulse, 10us
             OC2CONbits.OCM = 0b100; // Output compare single pulse
-            //delay100u();
-            delay1m();
+            delay100u();
+            delay100u();
+            delay100u();
+            delay100u();
+            //delay1m();
         }
         
-        motorYTheta = theta;
+        //motorYTheta = (float)theta;
+        if(!_RB9)
+            motorYTheta += (float)pulses * STEPPER_PULSE_DIST;
+        else
+            motorYTheta -= (float)pulses * STEPPER_PULSE_DIST;
     }
 }
