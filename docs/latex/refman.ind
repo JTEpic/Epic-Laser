@@ -1,0 +1,85 @@
+\begin{theindex}
+
+  \item {AsmLib.h}, \hyperpage{9}
+    \subitem {delay100u}, \hyperpage{9}
+    \subitem {delay1m}, \hyperpage{9}
+
+  \indexspace
+
+  \item {Coord}, \hyperpage{7}
+    \subitem {x}, \hyperpage{7}
+    \subitem {y}, \hyperpage{7}
+
+  \indexspace
+
+  \item {delay100u}
+    \subitem {AsmLib.h}, \hyperpage{9}
+  \item {delay1m}
+    \subitem {AsmLib.h}, \hyperpage{9}
+  \item {display.h}, \hyperpage{10}
+    \subitem {display\_draw}, \hyperpage{11}
+    \subitem {display\_render}, \hyperpage{11}
+    \subitem {display\_set}, \hyperpage{11}
+  \item {display\_draw}
+    \subitem {display.h}, \hyperpage{11}
+  \item {display\_render}
+    \subitem {display.h}, \hyperpage{11}
+  \item {display\_set}
+    \subitem {display.h}, \hyperpage{11}
+
+  \indexspace
+
+  \item {initMotors}
+    \subitem {motor.h}, \hyperpage{13}
+  \item {Introduction}, \hyperpage{1}
+
+  \indexspace
+
+  \item {motor.h}, \hyperpage{12}
+    \subitem {initMotors}, \hyperpage{13}
+    \subitem {motor\_set}, \hyperpage{13}
+  \item {motor\_set}
+    \subitem {motor.h}, \hyperpage{13}
+
+  \indexspace
+
+  \item {Object}, \hyperpage{8}
+    \subitem {pos}, \hyperpage{8}
+    \subitem {rot}, \hyperpage{8}
+    \subitem {scal}, \hyperpage{8}
+    \subitem {vCount}, \hyperpage{8}
+    \subitem {vertices}, \hyperpage{8}
+
+  \indexspace
+
+  \item {pos}
+    \subitem {Object}, \hyperpage{8}
+
+  \indexspace
+
+  \item {rot}
+    \subitem {Object}, \hyperpage{8}
+
+  \indexspace
+
+  \item {scal}
+    \subitem {Object}, \hyperpage{8}
+
+  \indexspace
+
+  \item {vCount}
+    \subitem {Object}, \hyperpage{8}
+  \item {vertices}
+    \subitem {Object}, \hyperpage{8}
+
+  \indexspace
+
+  \item {x}
+    \subitem {Coord}, \hyperpage{7}
+
+  \indexspace
+
+  \item {y}
+    \subitem {Coord}, \hyperpage{7}
+
+\end{theindex}
