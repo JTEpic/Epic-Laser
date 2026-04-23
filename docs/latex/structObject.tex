@@ -1,0 +1,62 @@
+\doxysection{Object Struct Reference}
+\hypertarget{structObject}{}\label{structObject}\index{Object@{Object}}
+
+
+{\ttfamily \+\#include $<$display.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const \doxymbox{\hyperlink{structCoord}{Coord}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structObject_a725b45535beee2cf6417d8a5e7f82a4f}{vertices}}
+\item 
+const uint8\+\_\+t \doxymbox{\hyperlink{structObject_abb9e5b37516f9e376fa36dda9d2d2815}{v\+Count}}
+\item 
+\doxymbox{\hyperlink{structCoord}{Coord}} \doxymbox{\hyperlink{structObject_abff98fd312562ed2f70249cd79ea0cf4}{pos}}
+\item 
+uint16\+\_\+t \doxymbox{\hyperlink{structObject_ab90f731ee31ed3dcb0064c251e311071}{rot}}
+\item 
+uint8\+\_\+t \doxymbox{\hyperlink{structObject_a232bea4e8fa8527be349af2d6457e6ed}{scal}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struct describing one object 
+
+\label{doc-variable-members}
+\Hypertarget{structObject_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structObject_abff98fd312562ed2f70249cd79ea0cf4}\index{Object@{Object}!pos@{pos}}
+\index{pos@{pos}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{pos}{pos}}
+{\footnotesize\ttfamily \label{structObject_abff98fd312562ed2f70249cd79ea0cf4} 
+\doxymbox{\hyperlink{structCoord}{Coord}} Object::\+pos}
+
+X and Y position of object \Hypertarget{structObject_ab90f731ee31ed3dcb0064c251e311071}\index{Object@{Object}!rot@{rot}}
+\index{rot@{rot}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{rot}{rot}}
+{\footnotesize\ttfamily \label{structObject_ab90f731ee31ed3dcb0064c251e311071} 
+uint16\+\_\+t Object::\+rot}
+
+Rotation angle of object \Hypertarget{structObject_a232bea4e8fa8527be349af2d6457e6ed}\index{Object@{Object}!scal@{scal}}
+\index{scal@{scal}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{scal}{scal}}
+{\footnotesize\ttfamily \label{structObject_a232bea4e8fa8527be349af2d6457e6ed} 
+uint8\+\_\+t Object::\+scal}
+
+Scale of object \Hypertarget{structObject_abb9e5b37516f9e376fa36dda9d2d2815}\index{Object@{Object}!vCount@{vCount}}
+\index{vCount@{vCount}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{vCount}{vCount}}
+{\footnotesize\ttfamily \label{structObject_abb9e5b37516f9e376fa36dda9d2d2815} 
+const uint8\+\_\+t Object::\+v\+Count}
+
+Number of relative coords (vertices) \Hypertarget{structObject_a725b45535beee2cf6417d8a5e7f82a4f}\index{Object@{Object}!vertices@{vertices}}
+\index{vertices@{vertices}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{vertices}{vertices}}
+{\footnotesize\ttfamily \label{structObject_a725b45535beee2cf6417d8a5e7f82a4f} 
+const \doxymbox{\hyperlink{structCoord}{Coord}}\texorpdfstring{$\ast$}{*} Object::\+vertices}
+
+Relative coords for object vertices, \{0,0\} is top left, \{255,255\} is bottom right, can make dynamic later for effects 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{display_8h}{display.\+h}}\end{DoxyCompactItemize}

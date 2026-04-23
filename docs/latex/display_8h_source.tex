@@ -1,0 +1,56 @@
+\doxysection{display.\+h}
+\hypertarget{display_8h_source}{}\label{display_8h_source}\doxymbox{\hyperlink{display_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ DISPLAY\_H}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ DISPLAY\_H}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifdef\ \ \_\_cplusplus}}
+\DoxyCodeLine{00015\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ window\_width\ 256\ \ }\textcolor{comment}{//\ Window\ Max\ X}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ window\_height\ 256\ }\textcolor{comment}{//\ Window\ Max\ Y}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ XAngleMax\ 17.325f;\ }\textcolor{comment}{//\ Max\ angle\ corresponding\ to\ farthest\ distance\ rightward\ to\ appear\ on\ screen,\ screen\ 1\ foot\ away}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ YAngleMax\ 10.125f;\ }\textcolor{comment}{//\ Max\ angle\ corresponding\ to\ farthest\ distance\ downward\ to\ appear\ on\ screen}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00025\ \ \ \ \ uint8\_t\ \doxymbox{\hyperlink{structCoord_a7d638f69371fb76ae8808302c8e86e84}{x}};\ }
+\DoxyCodeLine{00026\ \ \ \ \ uint8\_t\ \doxymbox{\hyperlink{structCoord_ab38a471e71a029ae5478a7b1c6582834}{y}};\ }
+\DoxyCodeLine{00027\ \}\ \doxymbox{\hyperlink{structCoord}{Coord}};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structCoord}{Coord}}\ *\doxymbox{\hyperlink{structObject_a725b45535beee2cf6417d8a5e7f82a4f}{vertices}};\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ \doxymbox{\hyperlink{structObject_abb9e5b37516f9e376fa36dda9d2d2815}{vCount}};\ }
+\DoxyCodeLine{00033\ \ \ \ \ \doxymbox{\hyperlink{structCoord}{Coord}}\ \doxymbox{\hyperlink{structObject_abff98fd312562ed2f70249cd79ea0cf4}{pos}};\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//Coord\ vel;\ //\ VelX\ and\ VelY\ velocity\ of\ object}}
+\DoxyCodeLine{00035\ \ \ \ \ uint16\_t\ \doxymbox{\hyperlink{structObject_ab90f731ee31ed3dcb0064c251e311071}{rot}};\ }
+\DoxyCodeLine{00036\ \ \ \ \ uint8\_t\ \doxymbox{\hyperlink{structObject_a232bea4e8fa8527be349af2d6457e6ed}{scal}};\ }
+\DoxyCodeLine{00037\ \}\ \doxymbox{\hyperlink{structObject}{Object}};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ Asteroid\ 2D\ representation\ (manual\ coordinates)}}
+\DoxyCodeLine{00040\ \textcolor{keyword}{extern}\ \doxymbox{\hyperlink{structObject}{Object}}\ asteroid;}
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ Square}}
+\DoxyCodeLine{00042\ \textcolor{keyword}{extern}\ \doxymbox{\hyperlink{structObject}{Object}}\ square;}
+\DoxyCodeLine{00043\ \textcolor{comment}{//\ Square2}}
+\DoxyCodeLine{00044\ \textcolor{keyword}{extern}\ \doxymbox{\hyperlink{structObject}{Object}}\ square2;}
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ Triangle}}
+\DoxyCodeLine{00046\ \textcolor{keyword}{extern}\ \doxymbox{\hyperlink{structObject}{Object}}\ triangle;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{comment}{//\ Hold\ pointers\ to\ all\ objects\ to\ be\ rendered}}
+\DoxyCodeLine{00049\ \textcolor{comment}{//extern\ Object\ objects[];}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00057\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{display_8h_ab39171f18dab5abcab1a21dde900ff9e}{display\_set}}(uint8\_t\ xPos,\ uint8\_t\ yPos);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00064\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{display_8h_a9a541180078d6b3570279e14cbefe559}{display\_draw}}(\doxymbox{\hyperlink{structObject}{Object}}\ *obj);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00069\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{display_8h_a1194ebd7b9ca71531cb4016243303f44}{display\_render}}();}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#ifdef\ \ \_\_cplusplus}}
+\DoxyCodeLine{00072\ \}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ DISPLAY\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

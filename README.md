@@ -10,3 +10,6 @@ This is a laser vector display project designed for the PIC24FJ64GA002 along wit
 
 ## Objects
 Various objects can be designed in the display.c file
+
+## Documentation
+Check the docs directory. To generate run 'doxygen Doxyfile'

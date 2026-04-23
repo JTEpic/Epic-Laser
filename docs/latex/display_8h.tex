@@ -1,0 +1,99 @@
+\doxysection{display.\+h File Reference}
+\hypertarget{display_8h}{}\label{display_8h}\index{display.h@{display.h}}
+
+
+Contains functions that manipulate the display.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structCoord}{Coord}}
+\item 
+struct \doxymbox{\hyperlink{structObject}{Object}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{display_8h_a9b05db8ab08a44c8bb2dfeb78fd61412}\label{display_8h_a9b05db8ab08a44c8bb2dfeb78fd61412} 
+\+\#define {\bfseries window\+\_\+width}~256
+\item 
+\Hypertarget{display_8h_ab2b8ce0216d9f11f046f97557b0b4eba}\label{display_8h_ab2b8ce0216d9f11f046f97557b0b4eba} 
+\+\#define {\bfseries window\+\_\+height}~256
+\item 
+\Hypertarget{display_8h_a581bedc2f52c28f3fd7ac10cddfaa582}\label{display_8h_a581bedc2f52c28f3fd7ac10cddfaa582} 
+\+\#define {\bfseries XAngle\+Max}~17.\+325f;
+\item 
+\Hypertarget{display_8h_a868f5fd7d0dcdc01e2a99050b24ad9e2}\label{display_8h_a868f5fd7d0dcdc01e2a99050b24ad9e2} 
+\+\#define {\bfseries YAngle\+Max}~10.\+125f;
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{display_8h_ab39171f18dab5abcab1a21dde900ff9e}{display\+\_\+set}} (uint8\+\_\+t x\+Pos, uint8\+\_\+t y\+Pos)
+\item 
+void \doxymbox{\hyperlink{display_8h_a9a541180078d6b3570279e14cbefe559}{display\+\_\+draw}} (\doxymbox{\hyperlink{structObject}{Object}} \texorpdfstring{$\ast$}{*}obj)
+\item 
+void \doxymbox{\hyperlink{display_8h_a1194ebd7b9ca71531cb4016243303f44}{display\+\_\+render}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{display_8h_a78390d93c68e78e35673296bcf7e1d7f}\label{display_8h_a78390d93c68e78e35673296bcf7e1d7f} 
+\doxymbox{\hyperlink{structObject}{Object}} {\bfseries asteroid}
+\item 
+\Hypertarget{display_8h_a8ec43ed8aceb9efb3ecb11af0b6c09cc}\label{display_8h_a8ec43ed8aceb9efb3ecb11af0b6c09cc} 
+\doxymbox{\hyperlink{structObject}{Object}} {\bfseries square}
+\item 
+\Hypertarget{display_8h_a2b913d87d32536db2105c042d6273a0f}\label{display_8h_a2b913d87d32536db2105c042d6273a0f} 
+\doxymbox{\hyperlink{structObject}{Object}} {\bfseries square2}
+\item 
+\Hypertarget{display_8h_a6c0553806d9c467a1ae6207f280e8f4b}\label{display_8h_a6c0553806d9c467a1ae6207f280e8f4b} 
+\doxymbox{\hyperlink{structObject}{Object}} {\bfseries triangle}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains functions that manipulate the display. 
+
+File:\+ \doxylink{display_8h}{display.\+h} Author:\+ JTEpic
+
+Created on April 3, 2026 
+
+\label{doc-func-members}
+\Hypertarget{display_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{display_8h_a9a541180078d6b3570279e14cbefe559}\index{display.h@{display.h}!display\_draw@{display\_draw}}
+\index{display\_draw@{display\_draw}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{display\_draw()}{display\_draw()}}
+{\footnotesize\ttfamily \label{display_8h_a9a541180078d6b3570279e14cbefe559} 
+void display\+\_\+draw (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structObject}{Object}} \texorpdfstring{$\ast$}{*}}]{obj}{}\end{DoxyParamCaption})}
+
+Draw input object
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em obj} & \doxylink{structObject}{Object} to display \\
+\hline
+\end{DoxyParams}
+\Hypertarget{display_8h_a1194ebd7b9ca71531cb4016243303f44}\index{display.h@{display.h}!display\_render@{display\_render}}
+\index{display\_render@{display\_render}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{display\_render()}{display\_render()}}
+{\footnotesize\ttfamily \label{display_8h_a1194ebd7b9ca71531cb4016243303f44} 
+void display\+\_\+render (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Draw all objects \Hypertarget{display_8h_ab39171f18dab5abcab1a21dde900ff9e}\index{display.h@{display.h}!display\_set@{display\_set}}
+\index{display\_set@{display\_set}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{display\_set()}{display\_set()}}
+{\footnotesize\ttfamily \label{display_8h_ab39171f18dab5abcab1a21dde900ff9e} 
+void display\+\_\+set (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{x\+Pos}{, }\item[{uint8\+\_\+t}]{y\+Pos}{}\end{DoxyParamCaption})}
+
+Moves the laser to align to the specified display coordinate (window\+\_\+width by window\+\_\+height)
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em x\+Pos} & X Pixel to move to \\
+\hline
+\doxymbox{\texttt{in}}  & {\em y\+Pos} & Y Pixel to move to \\
+\hline
+\end{DoxyParams}

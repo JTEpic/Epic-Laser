@@ -1,8 +1,11 @@
-/* 
+/**
  * File:   motor.h
  * Author: JTEpic
  *
  * Created on April 3, 2026
+ *
+ * @file motor.h
+ * @brief Contains functions that manipulate the motors
  */
 
 #ifndef MOTOR_H
@@ -25,10 +28,17 @@ enum{
     YMOTOR
 };
 
-// Initializes Motors
+/**
+ * Initializes Motors
+ */
 void initMotors();
 
-// Rotates the specified motor theta degrees
+/**
+ * Rotates the specified motor theta degrees
+ *
+ * @param[in] motor Motor to manipulate
+ * @param[in] theta Theta to set motor to
+ */
 void motor_set(uint8_t motor, uint16_t theta);
 
 // Rotates XMOTOR and YMOTOR motors allowing diagonal movement easily

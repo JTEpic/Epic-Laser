@@ -1,8 +1,11 @@
-/* 
+/**
  * File:   AsmLib.h
  * Author: JTEpic
  *
  * Created on February 6, 2026
+ *
+ * @file AsmLib.h
+ * @brief Contains asm functions allowing delays
  */
 
 #ifndef ASMLIB_H
@@ -12,7 +15,14 @@
 extern "C" {
 #endif
 
+/**
+ * Delays 100u
+ */
 void delay100u(void);
+
+/**
+ * Delays 1m
+ */
 void delay1m(void);
 
 #ifdef	__cplusplus

@@ -1,0 +1,67 @@
+\doxysection{motor.\+h File Reference}
+\hypertarget{motor_8h}{}\label{motor_8h}\index{motor.h@{motor.h}}
+
+
+Contains functions that manipulate the motors.  
+
+
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{motor_8h_a8b895703d3a6a3d3a7d61a4602ea5ee7}\label{motor_8h_a8b895703d3a6a3d3a7d61a4602ea5ee7} 
+\+\#define {\bfseries STEPPER\+\_\+\+PULSE\+\_\+\+DIST}~0.\+225f
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{motor_8h_aace53b45fa141f3773fb3acd8d0aa43b}\label{motor_8h_aace53b45fa141f3773fb3acd8d0aa43b} 
+enum \{ {\bfseries XMOTOR}
+, {\bfseries YMOTOR}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{motor_8h_a984b662dbcf5b55b90fc02e2f866a206}{init\+Motors}} ()
+\item 
+void \doxymbox{\hyperlink{motor_8h_ac1de3e52c1d9222059fbb9f629db29e5}{motor\+\_\+set}} (uint8\+\_\+t motor, uint16\+\_\+t theta)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{motor_8h_afa0fbcc10a9493e278f29b322e905615}\label{motor_8h_afa0fbcc10a9493e278f29b322e905615} 
+float {\bfseries motor\+XTheta}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains functions that manipulate the motors. 
+
+File:\+ \doxylink{motor_8h}{motor.\+h} Author:\+ JTEpic
+
+Created on April 3, 2026 
+
+\label{doc-func-members}
+\Hypertarget{motor_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{motor_8h_a984b662dbcf5b55b90fc02e2f866a206}\index{motor.h@{motor.h}!initMotors@{initMotors}}
+\index{initMotors@{initMotors}!motor.h@{motor.h}}
+\doxysubsubsection{\texorpdfstring{initMotors()}{initMotors()}}
+{\footnotesize\ttfamily \label{motor_8h_a984b662dbcf5b55b90fc02e2f866a206} 
+void init\+Motors (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Initializes Motors \Hypertarget{motor_8h_ac1de3e52c1d9222059fbb9f629db29e5}\index{motor.h@{motor.h}!motor\_set@{motor\_set}}
+\index{motor\_set@{motor\_set}!motor.h@{motor.h}}
+\doxysubsubsection{\texorpdfstring{motor\_set()}{motor\_set()}}
+{\footnotesize\ttfamily \label{motor_8h_ac1de3e52c1d9222059fbb9f629db29e5} 
+void motor\+\_\+set (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{motor}{, }\item[{uint16\+\_\+t}]{theta}{}\end{DoxyParamCaption})}
+
+Rotates the specified motor theta degrees
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em motor} & Motor to manipulate \\
+\hline
+\doxymbox{\texttt{in}}  & {\em theta} & Theta to set motor to \\
+\hline
+\end{DoxyParams}
