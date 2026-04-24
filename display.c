@@ -94,22 +94,32 @@ void display_render(){
     // Square2
     static int8_t square2VelX = 1;
     static int8_t square2VelY = 1;
-    // Left Boundary
-    if(square2.pos.x == 0){
-        square2VelX = 1;
-    // Right Boundary
-    } else if(square2.pos.x >= (255-50)){
-        square2VelX = -1;
+    //    // Left Boundary
+//    if(square2.pos.x == 0){
+//        square2VelX = 1;
+//    // Right Boundary
+//    } else if(square2.pos.x >= (255-50)){
+//        square2VelX = -1;
+//    }
+//    // Top Boundary
+//    if(square2.pos.y == 0){
+//        square2VelY = 1;
+//    }
+//    // Bottom Boundary
+//    else if(square2.pos.y >= (255-50)){
+//        square2VelY = -1;
+//    }
+    
+    
+    if(PORTAbits.RA4 == 0){
+        square2.pos.x += -4;
     }
-    // Top Boundary
-    if(square2.pos.y == 0){
-        square2VelY = 1;
+    if(PORTAbits.RA3 == 0){
+        square2.pos.x += 4;
     }
-    // Bottom Boundary
-    else if(square2.pos.y >= (255-50)){
-        square2VelY = -1;
-    }
-    square2.pos.x += square2VelX;
-    square2.pos.y += square2VelY;
+    
+//    square2.pos.y += 0;
+    
+    
     display_draw(&square2);
 }
