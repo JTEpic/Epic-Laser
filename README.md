@@ -7,6 +7,10 @@ This is a laser vector display project designed for the PIC24FJ64GA002 along wit
 * RB9 for the y motor direction
 * RB10 for enabling both motors, active low
 * RB5 for the laser
+* RA1 Left
+* RA2 Right
+* RA3 Down
+* RA4 Up
 
 ## Objects
 Various objects can be designed in the display.c file

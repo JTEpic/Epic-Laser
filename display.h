@@ -42,8 +42,8 @@ extern Object asteroid;
 extern Object square;
 // Square2
 extern Object square2;
-// Triangle
-extern Object triangle;
+// Border
+extern Object border;
 
 // Hold pointers to all objects to be rendered
 //extern Object objects[];

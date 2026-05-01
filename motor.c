@@ -79,9 +79,9 @@ void motor_set(uint8_t motor, uint16_t theta){
             OC1CONbits.OCM = 0b100; // Output compare single pulse
             delay100u(); // 1/T for freq, 10kHz max
             delay100u(); // 5kHz
-            delay100u();
-            delay100u(); // 2.5kHz
-            //delay1m(); // 1kHz recommend
+            delay100u(); // 3.3kHz Recommended
+            //delay100u(); // 2.5kHz
+            //delay1m(); // 1kHz
         }
         
         // Set New Theta
@@ -109,7 +109,7 @@ void motor_set(uint8_t motor, uint16_t theta){
             delay100u();
             delay100u();
             delay100u();
-            delay100u();
+            //delay100u();
             //delay1m();
         }
         

@@ -17,7 +17,7 @@ Object asteroid = {
 Object square = {
     (Coord[]){{0,0},{0,50},{50,50},{50,0},{0,0}}, // {0,0} is top left
     5, // Number of above 
-    {100,100}, // Initial Position
+    {20,100}, // Initial Position
     0, // Initial Rotation
     1  // Initial Scale
 };
@@ -31,11 +31,11 @@ Object square2 = {
     1  // Initial Scale
 };
 
-// Triangle Object
-Object triangle = {
-    (Coord[]){{0,50},{50,50},{25,0},{0,50}}, // {0,0} is top left
-    4, // Number of above 
-    {200,200}, // Initial Position
+// Border Object
+Object border = {
+    (Coord[]){{0,0},{0,255},{255,255},{255,0},{0,0}}, // {0,0} is top left
+    5, // Number of above 
+    {0,0}, // Initial Position
     0, // Initial Rotation
     1  // Initial Scale
 };
@@ -81,45 +81,49 @@ void display_render(){
     asteroid.pos.y += 5;
     display_draw(&asteroid);*/
     
-    // Square
-    square.pos.x += 5;
-    square.pos.y += 5;
-    //display_draw(&square);
+    // Border
+    //border.pos.x += 5;
+    //border.pos.y += 5;
+    display_draw(&border);
     
-    // Triangle
-    //triangle.pos.x += 5;
-    //triangle.pos.y += 5;
-    //display_draw(&triangle);
+    // Square, Automatic Control
+    static int8_t squareVelX = 1;
+    static int8_t squareVelY = 1;
+    // Left Boundary
+    if(square.pos.x == 0){
+        squareVelX = 1;
+    // Right Boundary
+    } else if(square.pos.x >= (255-50)){
+        squareVelX = -1;
+    }
+    // Top Boundary
+    if(square.pos.y == 0){
+        squareVelY = 1;
+    }
+    // Bottom Boundary
+    else if(square.pos.y >= (255-50)){
+        squareVelY = -1;
+    }
+    square.pos.x += squareVelX;
+    square.pos.y += squareVelY;
+    display_draw(&square);
     
-    // Square2
-    static int8_t square2VelX = 1;
-    static int8_t square2VelY = 1;
-    //    // Left Boundary
-//    if(square2.pos.x == 0){
-//        square2VelX = 1;
-//    // Right Boundary
-//    } else if(square2.pos.x >= (255-50)){
-//        square2VelX = -1;
-//    }
-//    // Top Boundary
-//    if(square2.pos.y == 0){
-//        square2VelY = 1;
-//    }
-//    // Bottom Boundary
-//    else if(square2.pos.y >= (255-50)){
-//        square2VelY = -1;
-//    }
-    
-    
-    if(PORTAbits.RA4 == 0){
+    // Square2, Manuel Control
+    // Down
+    if(!PORTAbits.RA3 == 0){
+        square2.pos.y += -4;
+    }
+    // Up
+    if(!PORTAbits.RA4 == 0){
+        square2.pos.y += 4;
+    }
+    // Left
+    if(!PORTAbits.RA1 == 0){
         square2.pos.x += -4;
     }
-    if(PORTAbits.RA3 == 0){
+    // Right
+    if(!PORTAbits.RA2 == 0){
         square2.pos.x += 4;
     }
-    
-//    square2.pos.y += 0;
-    
-    
     display_draw(&square2);
 }
